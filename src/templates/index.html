@@ -9,27 +9,34 @@
 		<title>JayFood | Indonesian Flavors, Endless Choices</title>
 	</head>
 	<body>
+		<a tabindex="1" href="#maincontent" class="skip-link">Menuju ke konten</a>
 		<header class="container">
 			<div class="logo">
 				<img src="./images/logo/logo.jpeg" width="50px" alt="Logo JayFood" />
 				<span><span class="text-orange">Resto</span>Jay</span>
 			</div>
 			<nav>
-				<ul>
-					<li><a class="font-semibold text-orange" href="/">Home</a></li>
-					<li><a href="#">Favourite</a></li>
-					<li><a href="#">About Us</a></li>
+				<button tabindex="2" id="hamburger">
+					<img class="hamburger" src="./icons/burger-menu.svg" alt="hamburger menu" />
+				</button>
+				<ul id="navLinks" class="">
+					<li><a tabindex="3" class="font-semibold text-orange" href="/">Home</a></li>
+					<li><a tabindex="4" href="#">Favourite</a></li>
+					<li><a tabindex="5" target="_blank" href="https://www.linkedin.com/in/deni-wijaya-321b89220/">About Us</a></li>
 				</ul>
 			</nav>
 		</header>
-		<main class="container">
+		<main>
 			<section class="hero">
 				<h1 class="tagline">Indonesian Flavors, Endless Choices</h1>
 			</section>
-			<section class="restos">
-				<h2>Explore Restaurant</h2>
+			<section id="maincontent" class="restos container">
+				<h2 tabindex="6">Explore Restaurant</h2>
 				<div id="restoCards" class="resto-cards"></div>
 			</section>
 		</main>
+		<footer>
+			<span>Copyright © 2020 - RestJay</span>
+		</footer>
 	</body>
 </html>
