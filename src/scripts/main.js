@@ -24,10 +24,17 @@ const main = () => {
                     : resto.description;
             restoCards.innerHTML += `
                 <div id="restoItem" class="resto-item">
-                    <img src="${resto.pictureId}" />
+                    <div class="thumbnail-item">
+                        <span class="label">${resto.city}</span>
+                        <img src="${resto.pictureId}" alt="Gambar ${
+    resto.name
+}"/>
+                    </div>
                     <div class="desc">
                         <span class="rating">${resto.rating}</span>
-                        <h3>${resto.name}</h3>
+                        <h3 tabindex="7" aria-label="${resto.name +
+                            ',' +
+                            resto.city}" class="title">${resto.name}</h3>
                         <p id="restoDesc">${restoDesc}</p>
                     </div>
                 </div>
@@ -35,6 +42,28 @@ const main = () => {
         });
     };
 
+    const hamburgerMenu = () => {
+        const hamburger = document.getElementById('hamburger');
+        const navLink = document.getElementById('navLinks');
+        const skipLink = document.querySelector('.skip-link');
+
+        hamburger.addEventListener('click', () => {
+            navLink.classList.toggle('showNav');
+
+            if (navLink.classList.contains('showNav')) {
+                const firstNavLink = navLink.querySelector('a');
+                if (firstNavLink) {
+                    firstNavLink.focus();
+                }
+            }
+        });
+
+        skipLink.addEventListener('click', () => {
+            hamburger.focus();
+        });
+    };
+
+    hamburgerMenu();
     getMenu();
 };
 
