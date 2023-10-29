@@ -1,16 +1,22 @@
 import RestaurantSource from '../../data/restaurant-source';
+import createRestoItemTemplate from '../templates/template-creator';
 
 const RestoList = {
   async render() {
     return `
-      <h2>Detail Pagee</h2>
+    <section class="container restos">
+      <h2 tabindex="0">Explore Restaurant</h2>
+      <div id="restoCards" class="resto-cards"></div>
+    </section>
     `;
   },
 
   async afterRender() {
-    const resto = await RestaurantSource.restoList();
-    console.log(resto);
-
+    const restos = await RestaurantSource.restoList();
+    const restoContainer = document.querySelector('#restoCards');
+    restos.forEach((resto) => {
+      restoContainer.innerHTML += createRestoItemTemplate(resto);
+    });
     // TODO: tampilkan movie di dalam DOM
   },
 };

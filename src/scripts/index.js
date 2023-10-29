@@ -3,7 +3,9 @@ import '../styles/main.css';
 import App from './views/app';
 
 const app = new App({
-  content: document.querySelector('#maincontent'),
+  button: document.querySelector('#hamburger'),
+  content: document.querySelector('#mainContent'),
+  drawer: document.querySelector('#navLinks'),
 });
 
 window.addEventListener('hashchange', () => {
