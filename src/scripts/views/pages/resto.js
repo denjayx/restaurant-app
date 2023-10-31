@@ -1,18 +1,24 @@
 import RestaurantSource from "../../data/restaturant-source";
+import createRestoItemTemplate from "../templates/template-creator";
 
 const RestoList = {
   async render() {
     return `
-      <h2>Resto Page</h2>
+      <section class="container restos">
+        <h2 tabindex="0">Explore Restaurant</h2>
+        <div id="restoCards" class="resto-cards"></div>
+      </section>
     `;
   },
- 
+
   async afterRender() {
     const restos = await RestaurantSource.restoList();
-    console.log(restos);
- 
-    // TODO: tampilkan movies di dalam DOM
+    const restoContainer = document.querySelector('#restoCards');
+    restos.forEach((resto) => {
+      restoContainer.innerHTML += createRestoItemTemplate(resto);
+    });
   },
+
 
 };
  
