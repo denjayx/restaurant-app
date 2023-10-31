@@ -140,11 +140,6 @@ nav ul li:hover a {
   overflow: hidden;
 }
 
-.resto-item .desc {
-  height: 160px;
-  overflow: hidden;
-}
-
 .thumbnail-item {
   position: relative;
 }
