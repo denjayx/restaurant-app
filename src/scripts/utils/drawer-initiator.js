@@ -8,16 +8,16 @@ const DrawerInitiator = {
       this._closeDrawer(event, drawer);
     });
   },
-
+ 
   _toggleDrawer(event, drawer) {
     event.stopPropagation();
     drawer.classList.toggle('showNav');
   },
-
+ 
   _closeDrawer(event, drawer) {
     event.stopPropagation();
     drawer.classList.remove('showNav');
   },
 };
-
+ 
 export default DrawerInitiator;

@@ -1,11 +1,9 @@
-import Detail from '../views/pages/detail';
-import Favourite from '../views/pages/favourtie';
 import RestoList from '../views/pages/resto';
-
+import Detail from '../views/pages/detail';
+ 
 const routes = {
-  '/': RestoList,
-  '/favourite': Favourite,
+  '/': RestoList, // default page
   '/detail/:id': Detail,
 };
-
+ 
 export default routes;
