@@ -1,5 +1,5 @@
-import RestaurantSource from "../../data/restaturant-source";
-import createRestoItemTemplate from "../templates/template-creator";
+import RestaurantSource from '../../data/restaturant-source';
+import createRestoItemTemplate from '../templates/template-creator';
 
 const RestoList = {
   async render() {
@@ -19,7 +19,6 @@ const RestoList = {
     });
   },
 
-
 };
- 
+
 export default RestoList;
