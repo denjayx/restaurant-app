@@ -30,6 +30,7 @@
     "workbox-webpack-plugin": "^7.0.0"
   },
   "dependencies": {
+    "idb": "^7.1.1",
     "regenerator-runtime": "^0.14.0",
     "workbox-window": "^7.0.0"
   }
