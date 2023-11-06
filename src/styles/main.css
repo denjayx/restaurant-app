@@ -258,6 +258,7 @@ nav ul li:hover a {
   gap: 24px;
   overflow: auto;
   overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .reviews-wrapper .review {
