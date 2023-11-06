@@ -1,11 +1,11 @@
-import 'regenerator-runtime'; /* for async await transpile */
+import 'regenerator-runtime';
 import '../styles/main.css';
 import App from './views/app';
 import swRegister from './utils/sw-register';
 
 const app = new App({
   button: document.querySelector('#hamburger'),
-  content: document.querySelector('#mainContent'),
+  content: document.querySelector('#content'),
   drawer: document.querySelector('#navLinks'),
 });
 

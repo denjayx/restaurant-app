@@ -1,6 +1,7 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const path = require('path');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -37,6 +38,25 @@ module.exports = {
         {
           from: path.resolve(__dirname, 'src/public/'),
           to: path.resolve(__dirname, 'dist/'),
+        },
+      ],
+    }),
+    new WorkboxWebpackPlugin.GenerateSW({
+      swDest: './sw.bundle.js',
+      runtimeCaching: [
+        {
+          urlPattern: ({ url }) => url.href.startsWith('https://restaurant-api.dicoding.dev/'),
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'restaurant-api-dicoding',
+          },
+        },
+        {
+          urlPattern: ({ url }) => url.href.startsWith(['https://restaurant-api.dicoding.dev/images/small/', 'https://restaurant-api.dicoding.dev/images/large/']),
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'restaurant-api-dicoding-image',
+          },
         },
       ],
     }),
