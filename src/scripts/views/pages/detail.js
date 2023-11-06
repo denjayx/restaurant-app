@@ -1,4 +1,5 @@
 import RestaurantSource from '../../data/restaturant-source';
+import CONFIG from '../../globals/config';
 import UrlParser from '../../routes/url-parser';
 import LikeButtonInitiator from '../../utils/like-button-initiator';
 import { createRestoDetailTemplate, customLoader } from '../templates/template-creator';
@@ -35,6 +36,22 @@ const Detail = {
         categories: resto.categories,
         customerReviews: resto.customerReviews,
       },
+    });
+
+    const reviewerName = document.querySelector('.reviewer-name');
+    const reviewerText = document.querySelector('.reviewer-text');
+    const addReviewButton = document.querySelector('.submit-review');
+
+    addReviewButton.addEventListener('click', (event) => {
+      event.stopPropagation();
+      RestaurantSource.postReview({
+        id: resto.id,
+        name: reviewerName.value,
+        review: reviewerText.value,
+      });
+      reviewerName.value = '';
+      reviewerText.value = '';
+      console.log(CONFIG.BASE_URL_REVIEW);
     });
   },
 };

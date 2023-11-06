@@ -68,6 +68,15 @@ const createRestoDetailTemplate = (resto) => `
         ${customerReview(resto)}
       </div>
     </div>
+
+    <div class="add-reviews">
+      <h2>Add Reviews</h2>
+      <div class="input-reviews">
+        <input type="text" class="reviewer-name" placeholder="Your Name">
+        <input type="text" class="reviewer-text" placeholder="Your Reviews">
+        <button class="submit-review">Add Review</button>
+      </div>
+    </div>
   </div>
 `;
 
@@ -101,6 +110,9 @@ const createLikedButtonTemplate = () => `
   </button>
 `;
 
+const loadFailed = () => `
+  <span>Data Not Loaded</span>
+`;
 const customLoader = {
   loading() {
     return `
@@ -123,4 +135,5 @@ export {
   Menus,
   customerReview,
   customLoader,
+  loadFailed,
 };

@@ -1,12 +1,11 @@
 import RestaurantSource from '../../data/restaturant-source';
-import { createRestoItemTemplate, customLoader } from '../templates/template-creator';
+import { createRestoItemTemplate, customLoader, loadFailed } from '../templates/template-creator';
+import '../components/Hero';
 
 const RestoList = {
   async render() {
     return `
-      <section class="hero">
-        <h1 class="tagline">Indonesian Flavors, Endless Choices</h1>
-      </section>
+      <hero-banner></hero-banner>
       <section id="mainContent" class="container restos">
         <h2>Explore Restaurant</h2>
         ${customLoader.loading()}
@@ -19,10 +18,14 @@ const RestoList = {
     const restos = await RestaurantSource.restoList();
     const restoContainer = document.querySelector('#restoCards');
 
-    restos.forEach((resto) => {
-      restoContainer.innerHTML += createRestoItemTemplate(resto);
-    });
-    customLoader.loaded();
+    if (restos.error) {
+      restoContainer.innerHTML = loadFailed();
+    } else {
+      restos.forEach((resto) => {
+        restoContainer.innerHTML += createRestoItemTemplate(resto);
+      });
+      customLoader.loaded();
+    }
   },
 
 };
