@@ -20,7 +20,7 @@ class CardRestaurant extends HTMLElement {
       </div>
       <div class="desc">
         <span class="rating">${rating}</span>
-        <h3 tabindex="0" aria-label="${`${name}, ${city}`}" class="title">
+        <h3 aria-label="${`${name}, ${city}`}" class="title">
           ${name}
         </h3>
         <p id="restoDesc">${description.substring(0, 110)}...</p>
