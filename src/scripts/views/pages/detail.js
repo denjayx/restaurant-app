@@ -7,10 +7,8 @@ import { createRestoDetailTemplate, customLoader } from '../templates/template-c
 const Detail = {
   async render() {
     return `
-      <div class="container">
-        ${customLoader.loading()}
-        <section id="restoDetail" class="hero-detail"></section>
-      </div>
+      ${customLoader.loading()}
+      <section id="restoDetail" class="hero-detail"></section>
       <div id="like-button-container"></div>
     `;
   },

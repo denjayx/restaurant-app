@@ -33,8 +33,9 @@ function customerReview(resto) {
 const createRestoDetailTemplate = (resto) => `
   <div class="hero-detail">
     <img src="${CONFIG.BASE_IMAGE_URL + resto.pictureId}" alt="${resto.name}" />
-    
-    <div class="flex col gap-2">
+  </div>
+
+  <div class="flex col gap-2">
       <h2 class="detail-name">${resto.name}</h2>
       <div class="flex just-start items-center gap-1 category-list">
         ${restoCategory(resto)}
@@ -72,12 +73,11 @@ const createRestoDetailTemplate = (resto) => `
     <div class="add-reviews">
       <h2>Add Reviews</h2>
       <div class="input-reviews">
-        <input type="text" class="reviewer-name" placeholder="Your Name">
-        <input type="text" class="reviewer-text" placeholder="Your Reviews">
+        <input tabindex="-1" type="text" class="reviewer-name" placeholder="Your Name">
+        <input tabindex="-1" type="text" class="reviewer-text" placeholder="Your Reviews">
         <button class="submit-review">Add Review</button>
       </div>
     </div>
-  </div>
 `;
 
 const createLikeButtonTemplate = () => `
@@ -98,7 +98,7 @@ const loadFailed = () => `
 const customLoader = {
   loading() {
     return `
-        <div class="container loader-wrapper">
+        <div class="loader-wrapper">
           <div class="custom-loader"></div>
         </div>
       `;
