@@ -75,7 +75,7 @@ const createRestoDetailTemplate = (resto) => `
       <div class="input-reviews">
         <input tabindex="-1" type="text" class="reviewer-name" placeholder="Your Name">
         <input tabindex="-1" type="text" class="reviewer-text" placeholder="Your Reviews">
-        <button class="submit-review">Add Review</button>
+        <button tabindex="-1" class="submit-review">Add Review</button>
       </div>
     </div>
 `;
