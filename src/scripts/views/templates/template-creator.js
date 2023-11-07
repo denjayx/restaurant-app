@@ -80,24 +80,6 @@ const createRestoDetailTemplate = (resto) => `
   </div>
 `;
 
-const createRestoItemTemplate = (resto) => `
-  <div id="restoItem" class="resto-item">
-    <a href="/#/detail/${resto.id}">
-      <div class="thumbnail-item">
-        <span class="label">${resto.city}</span>  
-        <img src="${CONFIG.BASE_THUMBNAIL_URL + resto.pictureId}" alt="${resto.name}" />
-      </div>
-      <div class="desc">
-        <span class="rating">${resto.rating}</span>
-        <h3 tabindex="0" aria-label="${`${resto.name}, ${resto.city}`}" class="title">
-          ${resto.name}
-        </h3>
-        <p id="restoDesc">${resto.description.substring(0, 110)}...</p>
-      </div>
-    </a>
-  </div>
-`;
-
 const createLikeButtonTemplate = () => `
   <button aria-label="like this resto" id="like-button" class="like">
     <i class="fa-regular fa-star"></i>
@@ -127,7 +109,6 @@ const customLoader = {
 };
 
 export {
-  createRestoItemTemplate,
   createRestoDetailTemplate,
   createLikeButtonTemplate,
   createLikedButtonTemplate,

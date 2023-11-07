@@ -1,6 +1,7 @@
 import RestaurantSource from '../../data/restaturant-source';
-import { createRestoItemTemplate, customLoader, loadFailed } from '../templates/template-creator';
+import { customLoader, loadFailed } from '../templates/template-creator';
 import '../components/Hero';
+import '../components/CardRestaurant';
 
 const RestoList = {
   async render() {
@@ -21,8 +22,10 @@ const RestoList = {
     if (restos.error) {
       restoContainer.innerHTML = loadFailed();
     } else {
-      restos.forEach((resto) => {
-        restoContainer.innerHTML += createRestoItemTemplate(resto);
+      restos.forEach((restaurant) => {
+        const restaurantItem = document.createElement('card-restaurant');
+        restaurantItem.restaurant = restaurant;
+        restoContainer.appendChild(restaurantItem);
       });
       customLoader.loaded();
     }

@@ -1,5 +1,5 @@
 import FavouriteRestoIdb from '../../data/favourite-resto-idb';
-import { createRestoItemTemplate } from '../templates/template-creator';
+import '../components/CardRestaurant';
 
 const Favourite = {
   async render() {
@@ -14,8 +14,10 @@ const Favourite = {
   async afterRender() {
     const restos = await FavouriteRestoIdb.getRestoList();
     const restoContainer = document.querySelector('#restoCards');
-    restos.forEach((resto) => {
-      restoContainer.innerHTML += createRestoItemTemplate(resto);
+    restos.forEach((restaurant) => {
+      const restaurantItem = document.createElement('card-restaurant');
+      restaurantItem.restaurant = restaurant;
+      restoContainer.appendChild(restaurantItem);
     });
   },
 };
