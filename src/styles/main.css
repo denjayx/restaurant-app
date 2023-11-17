@@ -142,11 +142,12 @@ h2 {
   font-size: 32px;
 }
 
-footer {
-  text-align: center;
-  margin-top: 40px !important;
-  padding: 40px;
+.footer-content {
+  width: 100%;
+  margin: 0 auto;
+  margin: 48px 0px;
 }
+
 
 .showNav {
   display: flex;
