@@ -7,7 +7,7 @@ const RestoList = {
   async render() {
     return `
       <hero-banner></hero-banner>
-      <section id="mainContent" class="container restos">
+      <section class="container restos">
         <h2>Explore Restaurant</h2>
         ${customLoader.loading()}
         <div id="restoCards" class="resto-cards"></div>

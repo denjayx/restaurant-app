@@ -13,20 +13,17 @@ class CardRestaurant extends HTMLElement {
 
     this.innerHTML = `
     <div id="restoItem" class="resto-item">
-    <a href="/#/detail/${id}">
       <div class="thumbnail-item">
         <span class="label">${city}</span>  
-        <img src="${CONFIG.BASE_THUMBNAIL_URL + pictureId}" alt="${name}" />
+        <img class="lazyload" data-src="${CONFIG.BASE_THUMBNAIL_URL + pictureId}" alt="${name}" />
       </div>
       <div class="desc">
+      
         <span class="rating">${rating}</span>
-        <h3 aria-label="${`${name}, ${city}`}" class="title">
-          ${name}
-        </h3>
+        <h3 class="resto-title" aria-label="${`${name}, ${city}`}" ><a href="/#/detail/${id}">${name || '-'}</a></h3>
         <p id="restoDesc">${description.substring(0, 110)}...</p>
       </div>
-    </a>
-  </div>
+    </div>
     `;
   }
 }

@@ -2,9 +2,11 @@ import 'regenerator-runtime';
 import '../styles/main.css';
 import App from './views/app';
 import swRegister from './utils/sw-register';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
-// const skipLink = document.getElementsByClassName('skip-link');
-// const mainContent = document.getElementById('mainContent');
+const START = 10;
+const NUMBER_OF_IMAGES = 100;
 
 const app = new App({
   button: document.querySelector('#hamburger'),

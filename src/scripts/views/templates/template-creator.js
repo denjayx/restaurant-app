@@ -80,14 +80,14 @@ const createRestoDetailTemplate = (resto) => `
     </div>
 `;
 
-const createLikeButtonTemplate = () => `
+const createLikeRestoButtonTemplate = () => `
   <button aria-label="like this resto" id="like-button" class="like">
     <i class="fa-regular fa-star"></i>
   </button>
 `;
 
-const createLikedButtonTemplate = () => `
-  <button aria-label="unlike this movie" id="like-button" class="like">
+const createUnlikeRestoButtonTemplate = () => `
+  <button aria-label="unlike this resto" id="like-button" class="like">
     <i class="fa-solid fa-star"></i>
   </button>
 `;
@@ -95,6 +95,7 @@ const createLikedButtonTemplate = () => `
 const loadFailed = () => `
   <span>Data Not Loaded</span>
 `;
+
 const customLoader = {
   loading() {
     return `
@@ -108,13 +109,18 @@ const customLoader = {
   },
 };
 
+const emptyData = () => `
+  <div id="nothingLiked" class="nothing-liked">Nothing Liked Restaurant</div>
+`;
+
 export {
   createRestoDetailTemplate,
-  createLikeButtonTemplate,
-  createLikedButtonTemplate,
+  createLikeRestoButtonTemplate,
+  createUnlikeRestoButtonTemplate,
   restoCategory,
   Menus,
   customerReview,
   customLoader,
   loadFailed,
+  emptyData,
 };

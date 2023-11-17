@@ -2,6 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
+const { InjectManifest } = require('workbox-webpack-plugin');
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -16,12 +21,13 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader',
-          },
+        use: [ 
+          { loader: MiniCssExtractPlugin.loader },
           {
             loader: 'css-loader',
+            options: {
+              url : false
+            },
           },
         ],
       },
@@ -37,6 +43,9 @@ module.exports = {
         {
           from: path.resolve(__dirname, 'src/public/'),
           to: path.resolve(__dirname, 'dist/'),
+          globOptions: {
+            ignore: ['**/heros/**'],
+          },
         },
       ],
     }),
@@ -48,16 +57,58 @@ module.exports = {
           handler: 'StaleWhileRevalidate',
           options: {
             cacheName: 'restaurant-api-dicoding',
-          },
-        },
-        {
-          urlPattern: ({ url }) => url.href.startsWith(['https://restaurant-api.dicoding.dev/images/small/', 'https://restaurant-api.dicoding.dev/images/large/']),
-          handler: 'StaleWhileRevalidate',
-          options: {
-            cacheName: 'restaurant-api-dicoding-image',
+            expiration: {
+              maxAgeSeconds: 60 * 60 * 24 * 7,
+            },
           },
         },
       ],
     }),
+    new CompressionPlugin({
+      algorithm: 'gzip',
+      test: /\.(js|css|html)$/,
+      compressionOptions: { level: 1 },
+      minRatio: 1,
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[contenthash]-[name].css',
+    }),
+    new ImageMinimizerPlugin({
+      minimizer: {
+        implementation: ImageMinimizerPlugin.svgoMinify,
+        options: {
+          encodeOptions: {
+            multipass: true,
+            plugins: [
+              "preset-default",
+            ],
+          },
+        },
+      },
+    }),
+    new CssMinimizerPlugin(),
   ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 20000,
+      maxSize: 70000,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      automaticNameDelimiter: '~',
+      enforceSizeThreshold: 50000,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
+        },
+      },
+    },
+  },
 };
