@@ -95,6 +95,7 @@ const createUnlikeRestoButtonTemplate = () => `
 const loadFailed = () => `
   <span>Data Not Loaded</span>
 `;
+
 const customLoader = {
   loading() {
     return `
@@ -108,6 +109,10 @@ const customLoader = {
   },
 };
 
+const emptyData = () => `
+  <div id="nothingLiked" class="nothing-liked">Nothing Liked Restaurant</div>
+`;
+
 export {
   createRestoDetailTemplate,
   createLikeRestoButtonTemplate,
@@ -117,4 +122,5 @@ export {
   customerReview,
   customLoader,
   loadFailed,
+  emptyData,
 };

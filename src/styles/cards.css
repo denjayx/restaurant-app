@@ -1,0 +1,53 @@
+.resto-cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  text-align: left;
+}
+
+.resto-item {
+  border-start-start-radius: 12px;
+  overflow: hidden;
+}
+
+.resto-item a {
+  text-decoration: none;
+  color: #141414;
+}
+
+.thumbnail-item {
+  position: relative;
+}
+
+.thumbnail-item .label {
+  position: absolute;
+  top: 24px;
+  z-index: 2;
+  padding: 8px 16px 8px 8px;
+  background: #b35c00;
+  color: #ffffff;
+  border-end-end-radius: 50px;
+  border-start-end-radius: 50px;
+  font-size: 24px;
+}
+
+.resto-item img {
+  width: 100%;
+  height: 250px;
+  position: relative;
+  object-fit: cover;
+}
+
+.resto-item .desc .title {
+  font-size: 24px;
+}
+
+.rating {
+  display: inline-block;
+  margin-top: 8px;
+  background-color: #fff3e6;
+  color: #663500;
+  padding: 4px 8px;
+  border-radius: 8px;
+}

@@ -13,20 +13,12 @@ exports.config = {
   helpers: {
     Playwright: {
       browser: 'chromium',
-      url: 'http://localhost:9000',
-      show: true,
-    },
+      url: 'http://localhost:9005',
+      show: true
+    }
   },
   include: {
-    I: './steps_file.js',
+    I: './steps_file.js'
   },
-  name: 'movie-catalogue-pushnotif-for-e2e-demo',
-  plugins: {
-    retryFailedStep: {
-      enabled: true,
-    },
-    screenshotOnFail: {
-      enabled: true,
-    },
-  },
-};
+  name: 'restaurant-app'
+}
