@@ -2,11 +2,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
-const { InjectManifest } = require('workbox-webpack-plugin');
-const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const CompressionPlugin = require("compression-webpack-plugin");
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -21,12 +20,12 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [ 
+        use: [
           { loader: MiniCssExtractPlugin.loader },
           {
             loader: 'css-loader',
             options: {
-              url : false
+              url: false,
             },
           },
         ],
@@ -73,6 +72,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[contenthash]-[name].css',
     }),
+    new CssMinimizerPlugin(),
     new ImageMinimizerPlugin({
       minimizer: {
         implementation: ImageMinimizerPlugin.svgoMinify,
@@ -80,13 +80,12 @@ module.exports = {
           encodeOptions: {
             multipass: true,
             plugins: [
-              "preset-default",
+              'preset-default',
             ],
           },
         },
       },
     }),
-    new CssMinimizerPlugin(),
   ],
   optimization: {
     splitChunks: {

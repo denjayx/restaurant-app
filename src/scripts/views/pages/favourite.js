@@ -1,5 +1,4 @@
 import FavouriteRestoIdb from '../../data/favourite-resto-idb';
-import { emptyData } from '../templates/template-creator';
 import '../components/CardRestaurant';
 import '../components/NothingLikedResto';
 

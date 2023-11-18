@@ -6,7 +6,6 @@ const LikeButtonPresenter = {
     this._resto = resto;
     this._favouriteRestos = favouriteRestos;
 
-
     await this._renderButton();
   },
 

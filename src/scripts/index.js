@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import 'regenerator-runtime';
 import '../styles/main.css';
 import App from './views/app';
@@ -22,7 +23,3 @@ window.addEventListener('load', () => {
   app.renderPage();
   swRegister();
 });
-
-// skipLink.addEventListener('click', () => {
-//   mainContent.focus();
-// });
